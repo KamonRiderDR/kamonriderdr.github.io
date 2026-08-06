@@ -42,7 +42,7 @@ Previously, I was a M.S. student in Computer Science at **Southeast University**
 
 - I am a big fan of Eason Chan, especially its "The Key" album. I also like Jay Chou and Pink Floyd.
 - Favourite Movies: Harry Potter Series and "A One and Another One", I am also a big fan of Edward Yang.
-- Recent Readings: 
+- Recent Readings: Little Red Book.
 
 
 ---
