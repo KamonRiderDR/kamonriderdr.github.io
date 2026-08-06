@@ -1,0 +1,164 @@
+/**
+ * Layout — Apple Glassmorphism Nav + Centered Content
+ */
+
+/* ── Global Nav ── */
+.global-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.nav-content {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 0 28px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-brand {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.nav-name {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.021em;
+  color: #1d1d1f;
+  opacity: 0.92;
+  transition: opacity 0.2s ease;
+}
+
+.nav-brand:hover .nav-name {
+  opacity: 1;
+}
+
+.nav-desc {
+  font-size: 12px;
+  font-weight: 400;
+  color: #86868b;
+  letter-spacing: -0.01em;
+  margin-top: 6px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+}
+
+.nav-links a {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1d1d1f;
+  opacity: 0.72;
+  letter-spacing: -0.014em;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: #0071e3;
+  border-radius: 2px;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(-50%);
+}
+
+.nav-links a:hover {
+  opacity: 1;
+  text-decoration: none;
+  color: #0071e3;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-links a.active {
+  opacity: 1;
+  color: #0071e3;
+}
+
+.nav-links a.active::after {
+  width: 100%;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-socials {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-left: 20px;
+  border-left: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.nav-social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  color: #1d1d1f;
+  opacity: 0.6;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-social svg {
+  width: 20px;
+  height: 20px;
+}
+
+.nav-social:hover {
+  opacity: 1;
+  color: #0071e3;
+  transform: translateY(-1px);
+}
+.main-content {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 56px 28px 140px;
+  transition: max-width 0.3s ease;
+}
+
+.main-content.wide {
+  max-width: 1024px;
+}
+
+/* ── Footer ── */
+.site-footer {
+  background: rgba(245, 245, 247, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(0, 0, 0, 0.04);
+  padding: 48px 28px;
+  margin-top: auto;
+}
+
+.footer-content {
+  max-width: 1024px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 13px;
+  color: #86868b;
+  letter-spacing: -0.01em;
+}

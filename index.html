@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loading...</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked@4.3.0/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.6/dist/purify.min.js"></script>
+</head>
+<body>
+  <nav class="global-nav">
+    <div class="nav-content">
+      <a href="#" class="nav-brand" id="nav-brand">
+        <span class="nav-name" id="nav-name"></span>
+        <span class="nav-desc" id="nav-desc"></span>
+      </a>
+      <div class="nav-right">
+        <div class="nav-links" id="nav-links"></div>
+        <div class="nav-socials" id="nav-socials"></div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div id="dynamic-content">
+      <div class="loading"></div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content" id="site-footer"></div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/renderer.js"></script>
+  <script src="js/sections.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

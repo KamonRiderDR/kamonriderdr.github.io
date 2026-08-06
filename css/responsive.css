@@ -1,0 +1,171 @@
+/**
+ * Responsive — Apple Mobile Adaptation
+ */
+
+@media (max-width: 734px) {
+  .nav-content {
+    padding: 0 20px;
+    height: 52px;
+  }
+
+  .nav-name {
+    font-size: 19px;
+  }
+
+  .nav-desc {
+    font-size: 11px;
+  }
+
+  .nav-right {
+    gap: 12px;
+  }
+
+  .nav-links {
+    gap: 18px;
+  }
+
+  .nav-links a {
+    font-size: 13px;
+  }
+
+  .nav-socials {
+    gap: 8px;
+    padding-left: 12px;
+  }
+
+  .nav-social svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .main-content {
+    padding: 36px 20px 80px;
+  }
+
+  .markdown-content h1 {
+    font-size: 34px;
+  }
+
+  .markdown-content h2 {
+    font-size: 24px;
+    margin-top: 44px;
+  }
+
+  .markdown-content h3 {
+    font-size: 19px;
+  }
+
+  .markdown-content p,
+  .markdown-content li {
+    font-size: 16px;
+  }
+
+  .paper-item {
+    padding: 20px;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .paper-thumb {
+    width: 100%;
+    max-width: 260px;
+  }
+
+  .project-card {
+    padding: 22px;
+  }
+
+  .news-item {
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px 20px;
+  }
+
+  .about-card {
+    padding: 20px 22px;
+    margin: 16px 0;
+    border-radius: 16px;
+  }
+
+  .about-card h2 {
+    font-size: 22px !important;
+  }
+
+  .about-intro {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .about-intro .avatar-hover {
+    width: 160px;
+    height: 160px;
+  }
+
+  .about-intro .avatar-hover img {
+    width: 160px !important;
+    height: 160px !important;
+  }
+
+  .avatar-float {
+    float: none;
+    display: block;
+    margin: 0 auto 28px;
+    width: 160px;
+    height: 160px;
+  }
+
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-links {
+    gap: 16px;
+  }
+
+  .nav-links a::after {
+    display: none;
+  }
+
+  .markdown-content h1 {
+    font-size: 30px;
+  }
+
+  .main-content {
+    padding: 28px 16px 60px;
+  }
+
+  .paper-item {
+    padding: 18px;
+    border-radius: 16px;
+  }
+
+  .project-card {
+    padding: 20px;
+    border-radius: 18px;
+  }
+}
+
+/* Print */
+@media print {
+  .global-nav {
+    position: static;
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .site-footer {
+    background: #fff;
+    border-top: 1px solid #ddd;
+  }
+
+  .paper-item,
+  .project-card,
+  .news-item {
+    background: #fff;
+    border: 1px solid #ddd;
+    box-shadow: none;
+  }
+}
