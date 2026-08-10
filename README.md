@@ -27,11 +27,13 @@ A clean, modern, and **fully dynamic** academic personal website powered by Mark
 │   ├── renderer.js         # Markdown fetch & render engine
 │   ├── sections.js         # Section-specific formatters
 │   └── main.js             # App initialization & routing
-├── data/                   # 📝 All your content (Markdown)
+├── data/                   # 📝 Static content (Markdown)
 │   ├── about.md
 │   ├── papers.md
-│   ├── projects.md
 │   └── news.md
+├── backend/                # 🗄️ Backend content — Notes & future API data
+│   └── notes/
+│       └── notes.md
 └── assets/
     └── images/
         └── avatar.jpg      # Your profile photo
@@ -69,7 +71,7 @@ Simply edit the Markdown files in the `data/` directory:
 |------|---------|
 | `data/about.md` | Bio, education, experience |
 | `data/papers.md` | Publications (grouped by `## Year`) |
-| `data/projects.md` | Projects (uses `*italic*` for tags) |
+| `backend/notes/notes.md` | Notes (uses `*italic*` for tags) |
 | `data/news.md` | News & updates (use `**Date**` prefix) |
 
 ### 3. Add Your Photo
@@ -128,11 +130,11 @@ The renderer automatically:
 
 Dates in `**bold**` at the start are extracted into a styled date badge.
 
-### Projects (`data/projects.md`)
+### Notes (`backend/notes/notes.md`)
 
 ```markdown
-- **[Project Name](link)**
-  - Description of the project
+- **[Note Title](link)**
+  - Description of the note
   - *Tag1, Tag2, Tag3*
 ```
 

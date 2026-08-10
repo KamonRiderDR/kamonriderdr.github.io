@@ -1,0 +1,351 @@
+/**
+ * Note: For backend
+ * Notes Module Styles
+ * Apple-style note list and note detail pages.
+ */
+
+/* ── Note List (card grid overrides) ── */
+.note-list .project-card {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.note-list .project-card:hover {
+  transform: translateY(-4px);
+}
+
+/* ── Back Button ── */
+.note-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 32px;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 12px;
+  color: #0071e3;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.note-back-btn:hover {
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transform: translateX(-2px);
+}
+
+/* ── Note Content (detail page) ── */
+.note-content {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* Headings — Apple Documentation style */
+.note-content h1 {
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: -0.022em;
+  line-height: 1.1;
+  color: #1d1d1f;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.note-content h2 {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.021em;
+  line-height: 1.25;
+  color: #1d1d1f;
+  margin-top: 48px;
+  margin-bottom: 16px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.note-content h3 {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.021em;
+  line-height: 1.3;
+  color: #1d1d1f;
+  margin-top: 32px;
+  margin-bottom: 12px;
+}
+
+.note-content h4 {
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.021em;
+  line-height: 1.35;
+  color: #1d1d1f;
+  margin-top: 24px;
+  margin-bottom: 8px;
+}
+
+/* Paragraphs */
+.note-content p {
+  font-size: 17px;
+  line-height: 1.6;
+  letter-spacing: -0.022em;
+  color: #333336;
+  margin-bottom: 16px;
+}
+
+/* Links */
+.note-content a {
+  color: #0071e3;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.note-content a:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+/* Lists */
+.note-content ul,
+.note-content ol {
+  margin: 16px 0;
+  padding-left: 24px;
+}
+
+.note-content li {
+  font-size: 16px;
+  line-height: 1.6;
+  letter-spacing: -0.021em;
+  margin-bottom: 8px;
+  color: #333336;
+}
+
+.note-content ul {
+  list-style-type: disc;
+}
+
+.note-content ul ul {
+  list-style-type: circle;
+}
+
+.note-content ol {
+  list-style-type: decimal;
+}
+
+/* Blockquote */
+.note-content blockquote {
+  margin: 28px 0;
+  padding: 20px 24px;
+  background: rgba(0, 113, 227, 0.04);
+  border-left: 4px solid #0071e3;
+  border-radius: 0 14px 14px 0;
+  color: #424245;
+  font-style: normal;
+}
+
+.note-content blockquote p {
+  margin: 0;
+  color: #424245;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+/* Code */
+.note-content code {
+  font-family: "SF Mono", SFMono-Regular, ui-monospace, Menlo, Consolas, monospace;
+  font-size: 0.9em;
+  background: #f5f5f7;
+  padding: 3px 8px;
+  border-radius: 6px;
+  color: #1d1d1f;
+  word-break: break-word;
+}
+
+.note-content pre {
+  background: #f5f5f7;
+  padding: 20px 24px;
+  border-radius: 14px;
+  overflow-x: auto;
+  margin: 24px 0;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.note-content pre code {
+  background: none;
+  padding: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #1d1d1f;
+}
+
+/* Images */
+.note-content img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 16px;
+  margin: 28px auto;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.note-content img:hover {
+  transform: scale(1.01);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* Tables */
+.note-content table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 24px 0;
+  font-size: 15px;
+  background: #fafafc;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+}
+
+.note-content th,
+.note-content td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.note-content th {
+  font-weight: 600;
+  color: #1d1d1f;
+  background: #f5f5f7;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.note-content tr:last-child td {
+  border-bottom: none;
+}
+
+/* HR */
+.note-content hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.08), transparent);
+  margin: 48px 0;
+}
+
+/* MathJax adjustments */
+.note-content mjx-container {
+  font-size: 105% !important;
+  margin: 12px 0 !important;
+}
+
+.note-content mjx-container[display="true"] {
+  display: block !important;
+  text-align: center !important;
+  margin: 20px 0 !important;
+  overflow-x: auto;
+}
+
+.note-content mjx-container[display="true"]::before,
+.note-content mjx-container[display="true"]::after {
+  content: none !important;
+}
+
+/* ── Code Syntax Highlight (Apple/Xcode style) ── */
+.note-content pre code[class*="language-"] {
+  font-family: "SF Mono", SFMono-Regular, ui-monospace, Menlo, Consolas, monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #1d1d1f;
+}
+
+/* Prism token colors — Apple/Xcode inspired */
+.note-content .token.comment,
+.note-content .token.prolog,
+.note-content .token.doctype,
+.note-content .token.cdata {
+  color: #8e8e93;
+  font-style: italic;
+}
+
+.note-content .token.punctuation {
+  color: #86868b;
+}
+
+.note-content .token.property,
+.note-content .token.tag,
+.note-content .token.boolean,
+.note-content .token.number,
+.note-content .token.constant,
+.note-content .token.symbol,
+.note-content .token.deleted {
+  color: #1c00cf;
+}
+
+.note-content .token.selector,
+.note-content .token.attr-name,
+.note-content .token.string,
+.note-content .token.char,
+.note-content .token.builtin,
+.note-content .token.inserted {
+  color: #c41a16;
+}
+
+.note-content .token.operator,
+.note-content .token.entity,
+.note-content .token.url,
+.note-content .language-css .token.string,
+.note-content .style .token.string {
+  color: #1d1d1f;
+}
+
+.note-content .token.atrule,
+.note-content .token.attr-value,
+.note-content .token.keyword {
+  color: #af52de;
+}
+
+.note-content .token.function,
+.note-content .token.class-name {
+  color: #0071e3;
+}
+
+.note-content .token.regex,
+.note-content .token.important,
+.note-content .token.variable {
+  color: #ff3b30;
+}
+
+/* Responsive */
+@media (max-width: 734px) {
+  .note-content h1 {
+    font-size: 32px;
+  }
+
+  .note-content h2 {
+    font-size: 22px;
+    margin-top: 36px;
+  }
+
+  .note-content p,
+  .note-content li {
+    font-size: 16px;
+  }
+
+  .note-content pre {
+    padding: 16px 20px;
+  }
+
+  .note-content img {
+    border-radius: 12px;
+  }
+}

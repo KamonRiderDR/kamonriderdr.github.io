@@ -9,7 +9,11 @@ function initApp() {
   setupRouting();
 
   const hash = window.location.hash.slice(1);
-  loadSection(hash || SITE_CONFIG.defaultSection);
+  if (hash.startsWith("notes/")) {
+    loadNote(hash.slice(6));
+  } else {
+    loadSection(hash || SITE_CONFIG.defaultSection);
+  }
 }
 
 function renderNav() {
@@ -86,7 +90,11 @@ function loadSection(sectionId) {
 function setupRouting() {
   window.addEventListener("hashchange", () => {
     const hash = window.location.hash.slice(1);
-    if (hash) loadSection(hash);
+    if (hash.startsWith("notes/")) {
+      loadNote(hash.slice(6));
+    } else if (hash) {
+      loadSection(hash);
+    }
   });
 }
 

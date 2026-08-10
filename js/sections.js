@@ -171,7 +171,7 @@ function getSectionProcessor(sectionId) {
   const processors = {
     papers: processPapersSection,
     news: processNewsSection,
-    projects: processProjectsSection,
+    notes: processNotesSection,
   };
   return processors[sectionId] || null;
 }

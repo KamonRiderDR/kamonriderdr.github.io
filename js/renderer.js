@@ -90,11 +90,47 @@ class MarkdownRenderer {
       return `<p class="error-message">Error: Markdown parser not available.</p>`;
     }
 
-    const rawHtml = marked.parse(markdown);
+    // Protect math blocks from Markdown backslash escaping
+    const mathBlocks = [];
+    let protectedMd = markdown;
+
+    // Protect display math $$...$$
+    protectedMd = protectedMd.replace(/\$\$([\s\S]*?)\$\$/g, (match, math) => {
+      const id = mathBlocks.length;
+      mathBlocks.push({ type: "display", math });
+      return `MATHDISPLAY${id}`;
+    });
+
+    // Protect inline math $...$
+    protectedMd = protectedMd.replace(/(?<!\$)\$(?!\$)([^\n$]+?)\$(?!\$)/g, (match, math) => {
+      const id = mathBlocks.length;
+      mathBlocks.push({ type: "inline", math });
+      return `MATHINLINE${id}`;
+    });
+
+    const rawHtml = marked.parse(protectedMd);
+
+    // Restore math blocks
+    let html = rawHtml;
+    mathBlocks.forEach((block, id) => {
+      const placeholder = block.type === "display"
+        ? `MATHDISPLAY${id}`
+        : `MATHINLINE${id}`;
+      const replacement = block.type === "display"
+        ? `$$${block.math}$$`
+        : `$${block.math}$`;
+      html = html.replace(placeholder, replacement);
+    });
+
+    // TODO: 公式居中 bug — 解包 <p> 后 MathJax 仍可能将 $$...$$ 当成 inline math 处理，
+    // 导致行间公式不居中。当前用 JS 强制设置了 display/textAlign 作为临时 workaround，
+    // 需要后续找到更优雅的方案（如 marked 扩展或 MathJax 自定义 tex 处理器）。
+    // Unwrap display math from <p> so MathJax treats them as block math
+    html = html.replace(/<p>\s*(\$\$[\s\S]*?\$\$)\s*<\/p>/g, "$1");
 
     // Sanitize if DOMPurify is available
     if (typeof DOMPurify !== "undefined") {
-      return DOMPurify.sanitize(rawHtml, {
+      return DOMPurify.sanitize(html, {
         ALLOWED_TAGS: [
           "h1", "h2", "h3", "h4", "h5", "h6",
           "p", "br", "hr",
@@ -112,7 +148,7 @@ class MarkdownRenderer {
       });
     }
 
-    return rawHtml;
+    return html;
   }
 
   /**
@@ -133,6 +169,38 @@ class MarkdownRenderer {
       // Apply post-processing
       if (options.postProcess) {
         options.postProcess(target);
+      }
+
+      // Typeset math with MathJax
+      // TODO: 行间公式居中问题 — 当前在 typeset 完成后用 JS 强制设置 display/textAlign，
+      // 属于临时 workaround。根本原因可能是 marked.js 将 $$...$$ 包进 <p> 后 MathJax
+      // 识别为 inline math，或 MathJax 样式表加载时机问题。待后续排查。
+      if (window.MathJax && window.MathJax.typesetPromise) {
+        window.MathJax.typesetPromise([target]).then(() => {
+          target.querySelectorAll("mjx-container").forEach((el) => {
+            if (el.getAttribute("display") === "true") {
+              el.style.display = "block";
+              el.style.textAlign = "center";
+              el.style.margin = "20px 0";
+            }
+          });
+        }).catch((err) => {
+          console.warn("MathJax typeset failed:", err);
+        });
+      }
+
+      // Syntax highlight code blocks
+      if (window.Prism) {
+        const blocks = target.querySelectorAll('pre code[class*="language-"]');
+        blocks.forEach((block) => {
+          try {
+            Prism.highlightElement(block);
+          } catch (e) {
+            console.warn("Prism highlight failed for", block.className, e);
+          }
+        });
+      } else {
+        console.warn("Prism.js not loaded — skipping syntax highlight");
       }
 
       // Dispatch custom event

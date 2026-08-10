@@ -27,7 +27,7 @@ const SITE_CONFIG = {
   navigation: [
     { id: "about", label: "About", dataFile: "data/about.md" },
     { id: "papers", label: "Publications", dataFile: "data/papers.md" },
-    { id: "projects", label: "Notes", dataFile: "data/projects.md" },
+    { id: "notes", label: "Notes", dataFile: "backend/notes/index.md" },
     // { id: "news", label: "News", dataFile: "data/news.md" },
   ],
 
