@@ -33,6 +33,12 @@ $$
 
 ![Logo](backend/assets/images/logo.jpg)
 
+*Logo 图片的说明文字 — 测试图片 caption 功能*
+
+也可以不带说明：
+
+![Logo](backend/assets/images/logo.jpg)
+
 ## 链接测试
 
 - **外部链接**：[我的 GitHub](https://github.com/KamonRiderDR)

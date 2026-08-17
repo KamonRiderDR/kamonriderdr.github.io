@@ -201,6 +201,21 @@
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
+/* Image caption — Apple style */
+.note-content .img-caption {
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.4;
+  color: #86868b;
+  margin-top: -18px;
+  margin-bottom: 28px;
+}
+
+.note-content .img-caption em {
+  font-style: normal;
+  color: inherit;
+}
+
 /* Tables */
 .note-content table {
   width: 100%;

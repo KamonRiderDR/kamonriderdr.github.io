@@ -203,6 +203,39 @@ class MarkdownRenderer {
         console.warn("Prism.js not loaded — skipping syntax highlight");
       }
 
+      // Image captions — detect "![alt](src)" followed by "*caption*"
+      const contentEl = target.querySelector(".markdown-content");
+      if (contentEl) {
+        contentEl.querySelectorAll("img").forEach((img) => {
+          const imgP = img.closest("p");
+          if (!imgP) return;
+
+          // Case 1: caption is in the next <p>
+          const nextP = imgP.nextElementSibling;
+          if (nextP && nextP.tagName === "P") {
+            const em = nextP.querySelector(":scope > em");
+            if (em && nextP.children.length === 1) {
+              nextP.classList.add("img-caption");
+              return;
+            }
+          }
+
+          // Case 2: caption is in the same <p> after a <br> (breaks: true)
+          const allEms = imgP.querySelectorAll("em");
+          for (const em of allEms) {
+            if (img.compareDocumentPosition(em) & Node.DOCUMENT_POSITION_FOLLOWING) {
+              const captionP = document.createElement("p");
+              captionP.className = "img-caption";
+              captionP.appendChild(em.cloneNode(true));
+              imgP.parentNode.insertBefore(captionP, imgP.nextSibling);
+              em.remove();
+              imgP.querySelectorAll("br").forEach((br) => br.remove());
+              break;
+            }
+          }
+        });
+      }
+
       // Dispatch custom event
       target.dispatchEvent(new CustomEvent("contentLoaded", {
         detail: { url, markdown, html },
