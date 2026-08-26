@@ -8,3 +8,6 @@
   - Benchmarking LLM's agentic capabilities under real-world scenes.
   - *LLM, Benchmark*
 
+- **[大模型OPD笔记](LLM_OPD)**
+  - A note for learning LLM and OPD.
+  - *LLM, OPD*

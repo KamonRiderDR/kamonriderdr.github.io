@@ -101,8 +101,8 @@ class MarkdownRenderer {
       return `MATHDISPLAY${id}`;
     });
 
-    // Protect inline math $...$
-    protectedMd = protectedMd.replace(/(?<!\$)\$(?!\$)([^\n$]+?)\$(?!\$)/g, (match, math) => {
+    // Protect inline math $...$ (allow multiline)
+    protectedMd = protectedMd.replace(/(?<!\$)\$(?!\$)([\s\S]+?)\$(?!\$)/g, (match, math) => {
       const id = mathBlocks.length;
       mathBlocks.push({ type: "inline", math });
       return `MATHINLINE${id}`;
@@ -128,25 +128,48 @@ class MarkdownRenderer {
     // Unwrap display math from <p> so MathJax treats them as block math
     html = html.replace(/<p>\s*(\$\$[\s\S]*?\$\$)\s*<\/p>/g, "$1");
 
-    // Sanitize if DOMPurify is available
+    // Split HTML into math and non-math segments so DOMPurify doesn't mangle
+    // LaTeX symbols like <, >, & inside formulas.
+    const segments = [];
+    let lastIndex = 0;
+    const mathRegex = /(\$\$[\s\S]*?\$\$|\$[^\$]+?\$)/g;
+    let m;
+    while ((m = mathRegex.exec(html)) !== null) {
+      if (m.index > lastIndex) {
+        segments.push({ type: "html", content: html.slice(lastIndex, m.index) });
+      }
+      segments.push({ type: "math", content: m[0] });
+      lastIndex = m.index + m[0].length;
+    }
+    if (lastIndex < html.length) {
+      segments.push({ type: "html", content: html.slice(lastIndex) });
+    }
+
+    // Sanitize only HTML segments
     if (typeof DOMPurify !== "undefined") {
-      return DOMPurify.sanitize(html, {
-        ALLOWED_TAGS: [
-          "h1", "h2", "h3", "h4", "h5", "h6",
-          "p", "br", "hr",
-          "ul", "ol", "li",
-          "strong", "em", "b", "i", "u", "s", "del",
-          "a", "img",
-          "code", "pre", "blockquote",
-          "table", "thead", "tbody", "tr", "th", "td",
-          "div", "span",
-        ],
-        ALLOWED_ATTR: [
-          "href", "src", "alt", "title", "id", "class",
-          "target", "rel",
-        ],
+      segments.forEach((seg) => {
+        if (seg.type === "html") {
+          seg.content = DOMPurify.sanitize(seg.content, {
+            ALLOWED_TAGS: [
+              "h1", "h2", "h3", "h4", "h5", "h6",
+              "p", "br", "hr",
+              "ul", "ol", "li",
+              "strong", "em", "b", "i", "u", "s", "del",
+              "a", "img",
+              "code", "pre", "blockquote",
+              "table", "thead", "tbody", "tr", "th", "td",
+              "div", "span",
+            ],
+            ALLOWED_ATTR: [
+              "href", "src", "alt", "title", "id", "class",
+              "target", "rel",
+            ],
+          });
+        }
       });
     }
+
+    html = segments.map((s) => s.content).join("");
 
     return html;
   }

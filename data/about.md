@@ -47,4 +47,4 @@ Previously, I was a M.S. student in Computer Science at **Southeast University**
 
 ---
 
-*Feel free to reach out via email for collaboration or questions! 📧Email: rdddong@qq.com*
+*Feel free to reach out via email for collaboration or questions! 📧Email: rdddong at qq dot com*
