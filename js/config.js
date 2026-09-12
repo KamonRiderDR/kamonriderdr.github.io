@@ -20,6 +20,7 @@ const SITE_CONFIG = {
   socials: [
     { icon: "email", url: "mailto:your.email@example.com", label: "Email" },
     { icon: "github", url: "https://github.com/KamonRiderDR", label: "GitHub" },
+    { icon: "scholar", url: "https://scholar.google.com/citations?view_op=list_works&hl=zh-CN&user=iHjZHL4AAAAJ", label: "Google Scholar" },
     { icon: "xiaohongshu", url: "https://www.xiaohongshu.com/user/profile/612b9bb2000000000100552b", label: "小红书" },
   ],
 
