@@ -78,9 +78,25 @@ Simply edit the Markdown files in the `data/` directory:
 
 Place your profile photo at `assets/images/avatar.jpg`.
 
-### 4. Deploy
+### 4. Run Locally
 
-#### Option A: GitHub Pages (Recommended)
+Because all content is fetched dynamically via `fetch()`, opening `index.html` directly with the `file://` protocol **will not work** — browsers block cross-origin requests to local files (CORS). Start a local HTTP server instead:
+
+```bash
+# Python 3 (preinstalled on macOS / Linux)
+python3 -m http.server 8000
+
+# Node.js
+npx serve .
+```
+
+Then open **http://localhost:8000** in your browser.
+
+> **Tip**: After editing Markdown or JS files, force-refresh with `Cmd + Shift + R` (macOS) or `Ctrl + F5` (Windows) to bypass browser caching. CSS/JS links in `index.html` carry `?v=N` version params — bump `N` when you ship JS changes to force clients to reload.
+
+### 5. Deploy
+
+#### GitHub Pages (Recommended)
 
 1. Push this repo to GitHub
 2. Go to **Settings → Pages**
@@ -88,20 +104,6 @@ Place your profile photo at `assets/images/avatar.jpg`.
 4. Your site will be live at `https://yourusername.github.io/repo-name/`
 
 > **Note**: If deploying to a subdirectory, update the asset paths in `index.html` and `config.js` to use relative paths (`./css/...` instead of `/css/...`).
-
-#### Option B: Local Preview
-
-Simply open `index.html` in your browser, or run a local server:
-
-```bash
-# Python 3
-python -m http.server 8000
-
-# Node.js
-npx serve .
-
-# Then open http://localhost:8000
-```
 
 ## 📝 Markdown Conventions
 

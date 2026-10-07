@@ -1,6 +1,9 @@
 # Selected Highlights
 
 ## 2026
+- **Learning from Failures: Heterogeneous Graph Memory for Small Language Model Tool-Using Agents** (preprint)
+  - Jiaxing Li, Lei Song, **Rui Dong**, Youyong Kong
+  - [PDF](https://arxiv.org/pdf/2609.28003) | [Blog](https://www.xiaohongshu.com/user/profile/612b9bb2000000000100552b)
 
 - **When Language Models Meet NeuroGraphs: Exploring Enhanced Agentic LLM Framework Towards Brain Network Analysis** (preprint)
   ![framework_brainagent](assets/images/publications/BrainAgent.jpg)

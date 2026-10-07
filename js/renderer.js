@@ -228,6 +228,14 @@ class MarkdownRenderer {
 
       // Image captions — detect "![alt](src)" followed by "*caption*"
       const contentEl = target.querySelector(".markdown-content");
+
+      // mailto: links (incl. GFM auto-linked emails) — unwrap to plain text
+      // so emails in content are non-clickable strings
+      target.querySelectorAll('a[href^="mailto:"]').forEach((link) => {
+        const textNode = document.createTextNode(link.textContent);
+        link.parentNode.replaceChild(textNode, link);
+      });
+
       if (contentEl) {
         contentEl.querySelectorAll("img").forEach((img) => {
           const imgP = img.closest("p");

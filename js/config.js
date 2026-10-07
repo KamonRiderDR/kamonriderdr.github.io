@@ -12,13 +12,13 @@ const SITE_CONFIG = {
   profile: {
     name: "Rui Dong",
     description: "让我对这世界好奇", // 显示在名字下方
-    email: "your.email@example.com",
+    email: "220232190@aa.seu.edu.cn",
     avatar: "assets/images/logo.jpg",
   },
 
   // 社交链接（导航栏右侧图标）
   socials: [
-    { icon: "email", url: "mailto:your.email@example.com", label: "Email" },
+    { icon: "email", url: "mailto:220232190@aa.seu.edu.cn", label: "Email" },
     { icon: "github", url: "https://github.com/KamonRiderDR", label: "GitHub" },
     { icon: "scholar", url: "https://scholar.google.com/citations?view_op=list_works&hl=zh-CN&user=iHjZHL4AAAAJ", label: "Google Scholar" },
     { icon: "xiaohongshu", url: "https://www.xiaohongshu.com/user/profile/612b9bb2000000000100552b", label: "小红书" },
